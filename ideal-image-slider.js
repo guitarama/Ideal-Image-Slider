@@ -1,5 +1,5 @@
 /*
- * Ideal Image Slider v1.5.1
+ * Ideal Image Slider v1.5.2
  *
  * By Gilbert Pellegrom
  * http://gilbert.pellegrom.me
@@ -97,7 +97,15 @@ var IdealImageSlider = (function() {
 		if (el.classList) {
 			el.classList.remove(className);
 		} else {
-			el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	    var newClassName = "";
+	    var i;
+	    var classes = el.className.split(' ');
+	    for(i = 0; i < classes.length; i++) {
+	        if(classes[i] !== className) {
+	            newClassName += classes[i] + " ";
+	        }
+	    }
+	    el.className = newClassName;
 		}
 	};
 
